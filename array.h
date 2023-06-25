@@ -20,7 +20,7 @@ int find(IntArray arr, int value) {
 
 void print(IntArray arr) {
     for (int i = 0; i < arr.length; i++) {
-        printf("%d\t", arr.items[i]);
+        printf("%s%d%s\t", "\x1B[1;36m", arr.items[i], "\x1B[0m");
     }
 }
 
