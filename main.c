@@ -58,10 +58,13 @@ int main(int argc, char* argv[]) {
     print(refs);
     printf("\n");
     printMat(frames.length, refs.length, output);
+    int countFaults = 0;
     for (int i = 0; i < faults.length; i++) {
         char val = faults.items[i] ? '*' : ' ';
         printf("%s%c%s\t", "\x1b[1;33m", val, "\x1b[0m");
+        countFaults += faults.items[i] != 0;
     }
+    printf("\nNumber of Page Faults: %d", countFaults);
 
     // Free memory
     deallocate(refs);
