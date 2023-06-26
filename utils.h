@@ -41,7 +41,8 @@ int choice(
 void printMat(int row, int col, int (*mat)[col]) {
     for (int i = 0;  i < row; i++) {
         for (int j = 0; j < col; j++) {
-            printf("%d\t", mat[i][j]);
+            char val = mat[i][j] == -1 ? ' ' : mat[i][j] + '0';
+            printf("%c\t", val);
         }
         printf("\n");
     }
