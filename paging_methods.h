@@ -57,11 +57,6 @@ int LRU(int pageIndex, IntArray refs, IntArray frames, int prevPos) {
             count += mostRecentPages.items[posInFrames] == 0;
             mostRecentPages.items[posInFrames] = 1;
         }
-
-        if (pageIndex == 10) {
-            print(mostRecentPages);
-            printf("---- %d\n", count);
-        }
     }
 
     pos = find(mostRecentPages, 0);
