@@ -24,8 +24,8 @@ int OPT(int pageIndex, IntArray refs, IntArray frames, int prevPos) {
         int iterPage = refs.items[i];
         int posInFrames = find(frames, iterPage);
         if(posInFrames != -1) {
+            count += willArrivePages.items[posInFrames] == 0;
             willArrivePages.items[posInFrames] = 1;
-            count++;
         }
     }
 
@@ -54,8 +54,13 @@ int LRU(int pageIndex, IntArray refs, IntArray frames, int prevPos) {
         int iterPage = refs.items[i];
         int posInFrames = find(frames, iterPage);
         if (posInFrames != -1) {
+            count += mostRecentPages.items[posInFrames] == 0;
             mostRecentPages.items[posInFrames] = 1;
-            count++;
+        }
+
+        if (pageIndex == 10) {
+            print(mostRecentPages);
+            printf("---- %d\n", count);
         }
     }
 
