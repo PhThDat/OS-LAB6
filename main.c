@@ -5,6 +5,7 @@
 #include "paging_methods.h"
 
 int main(int argc, char* argv[]) {
+    system("clear");
     srand(time(0));
 
     // Default reference sequence or choose a lenght
