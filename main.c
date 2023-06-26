@@ -5,19 +5,20 @@
 #include "paging_methods.h"
 
 int main(int argc, char* argv[]) {
-    system("clear");
+    // system("clear");
     srand(time(0));
 
     // Default reference sequence or choose a lenght
-    int init = choice(
+    int initType = choice(
         "--- Page Replacement algorithm ---",
         "Default referenced sequence",
-        "Choose a number of pages",
+        "Random a Reference Sequence",
+        "Manual input",
         NULL
     );
 
     // Create reference sequence
-    IntArray refs = initRefs(init == 1);
+    IntArray refs = initRefs(initType);
     // Create frames slots
     IntArray frames = initFrames();
     // Choose paging method

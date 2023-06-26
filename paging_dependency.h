@@ -6,12 +6,20 @@
 #include <stdio.h>
 #include "array.h"
 
-IntArray initRefs(__int8_t random) {
+IntArray initRefs(__int8_t initType) {
     srand(time(0));
     IntArray refSeq;
-    switch (random)
+    switch (initType)
     {
-    case 0:
+    case 1:
+        refSeq.length = 11;
+        int defaultRef[] = {2, 1, 5, 2, 1 ,2, 6, 0, 0, 0, 7};
+        refSeq.items = (int*)malloc(refSeq.length * sizeof(int));
+        for (int i = 0; i < refSeq.length; i++) {
+            refSeq.items[i] = defaultRef[i];
+        }
+        break;
+    case 2:
         printf("Please input number of pages: ");
         scanf("%d", &refSeq.length);
 
@@ -20,15 +28,17 @@ IntArray initRefs(__int8_t random) {
             refSeq.items[i] = rand() % 10;
         }
         break;
-    
-    default:
-        refSeq.length = 11;
-        int defaultRef[] = {2, 1, 5, 2, 1 ,2, 6, 0, 0, 0, 7};
+    case 3:
+        printf("Please input number of pages: ");
+        scanf("%d", &refSeq.length);
         refSeq.items = (int*)malloc(refSeq.length * sizeof(int));
+    
         for (int i = 0; i < refSeq.length; i++) {
-            refSeq.items[i] = defaultRef[i];
+            do {
+                printf("Refs[%d] = ", i);
+                scanf("%d", refSeq.items+i);
+            } while (refSeq.items[i] < 0);
         }
-        break;
     }
 
     return refSeq;
